@@ -1,11 +1,11 @@
-<th:block th:include="morcms/header.html"></th:block>
+<th:block th:include="admin/header.html"></th:block>
 
 <h1>Edit User</h1>
-<a href="/users/" class="btn btn-primary right">Back</a>
+<a href="./../" class="btn btn-primary right">Back</a>
 <br/>
 <p>To make any changes, please provide the old password</p>
 <div class="form-group">
-    <form method="post" action="/users/edit" class="fw500" th:object="${user}">
+    <form method="post" action="./edit" class="fw500" th:object="${user}">
         <input type="hidden" th:field="*{id}">
         <div class="block">
             <label>Username:</label>
@@ -28,4 +28,4 @@
     </form>
 </div>
 
-<th:block th:include="morcms/footer.html"></th:block>
+<th:block th:include="admin/footer.html"></th:block>

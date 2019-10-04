@@ -29,26 +29,33 @@ public class Root extends ControllerAbstract{
     @GetMapping("login")
     public String get_login(HttpSession session){
         if(userType(session) != UserType.ADMINISTRATOR){
-            return "morcms/login";
+            return "login";
         }
-        return "morcms/index";
+        return "index";
     }
 
     @PostMapping("login")
     public String post_login(User user, Model model, HttpSession session)  {
+        System.out.println("Login attempt");
         try {
             //Returns a user object on success or null on failure
             session.setAttribute("user", as.validateUser(user));
             //If the user hasnt logged in, we want to validate the user
             if(userType(session) != UserType.ADMINISTRATOR){
-                return "morcms/login";
+                return "login";
             }
             //If we dont specificly update the userType, it takes 1 more load of the page for it to update..
             model.addAttribute("userType", userType(session));
-            return "morcms/index";
+            return "index";
         } catch (SQLException e) {
             logger.log("post_login", e, LoggerService.CONTROLLER_MSG);
             return cmspath+"error";
         }
+    }
+
+    @GetMapping("logout")
+    public String get_logout(HttpSession session){
+        session.invalidate();
+        return "index";
     }
 }

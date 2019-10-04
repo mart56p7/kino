@@ -1,10 +1,10 @@
-<th:block th:include="morcms/header.html"></th:block>
+<th:block th:include="admin/header.html"></th:block>
 
 <h1 class="block">Create User</h1>
-<a href="/users/" class="btn btn-primary right">Back</a>
+<a href="./" class="btn btn-primary right">Back</a>
 <br/>
 <div class="form-group">
-    <form method="post" action="/users/create" th:object="${user}">
+    <form method="post" action="./create" th:object="${user}">
         <label>Username: </label> <input type="text" th:field="*{name}" class="form-control">
         <p class="errortext" th:if="${#fields.hasErrors('name')}">The name must be between 2 and 50 characters long.</p>
         <label>Password:</label> <input type="password" th:field="*{password}" class="form-control">
@@ -16,4 +16,4 @@
 </div>
 
 
-<th:block th:include="morcms/footer.html"></th:block>
+<th:block th:include="admin/footer.html"></th:block>

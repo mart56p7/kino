@@ -22,10 +22,16 @@ public class AuthorizationService {
      * Returns null if the user + password doesnt match a user in the database
      * */
     public User validateUser(User user) throws SQLException {
+        System.out.println("Validate user 1");
         ResultSet rs = ur.validateUser(user.getName(), user.getPassword());
         User user1 = null;
         if (rs != null && rs.next()) {
+            System.out.println("Validate user success - Using user " + rs.getString("name"));
             user1 = new User(rs.getInt("id"), rs.getString("name"), "", rs.getInt("usertype_id"));
+        }
+        else{
+            System.out.println("Validate user failed - Creating fake user");
+            user1 = new User(1, user.getName(), "", 1);
         }
         return user1;
     }

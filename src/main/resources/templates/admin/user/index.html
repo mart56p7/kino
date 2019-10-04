@@ -1,8 +1,8 @@
-<th:block th:include="morcms/header.html"></th:block>
+<th:block th:include="admin/header.html"></th:block>
 
 
 <h1>Users</h1>
-<a href="/users/create" class="btn btn-primary right">Create User</a>
+<a href="./create" class="btn btn-primary right">Create User</a>
 <br/><br/>
 <table>
     <thead>
@@ -15,13 +15,13 @@
     </thead>
     <tbody>
     <tr th:each="user : ${users}">
-        <td><a th:href="@{/users/info/} + ${user.getId()}" th:text="${user.getName()}"></a></td>
-        <td><a th:href="@{/users/info/} + ${user.getId()}" th:text="${user.getUserType().name()}"></a></td>
-        <td><a th:href="@{/users/edit/} + ${user.getId()}" class="glyphicon glyphicon-pencil"></a></td>
-        <td><a th:href="@{/users/delete/} + ${user.getId()}" class="glyphicon glyphicon-remove"></a></td>
+        <td><a th:href="@{./info/} + ${user.getId()}" th:text="${user.getName()}"></a></td>
+        <td><a th:href="@{./info/} + ${user.getId()}" th:text="${user.getUserType().name()}"></a></td>
+        <td><a th:href="@{./edit/} + ${user.getId()}" class="glyphicon glyphicon-pencil"></a></td>
+        <td><a th:href="@{./delete/} + ${user.getId()}" class="glyphicon glyphicon-remove"></a></td>
     </tr>
     </tbody>
 </table>
 
 
-<th:block th:include="morcms/footer.html"></th:block>
+<th:block th:include="admin/footer.html"></th:block>

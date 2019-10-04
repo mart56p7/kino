@@ -9,7 +9,7 @@ public enum UserType {
     ADMINISTRATOR (1, "Administrator"),
     GUEST (2, "Guest"), //Same as Anonymous, but cookies are available
     REGISTERED (3, "Registered"),
-    ANONYMOUS (3, "Anonymous"); //Cookies are not available for anonymous users
+    ANONYMOUS (4, "Anonymous"); //Cookies are not available for anonymous users
 
     private int id;
     private String name;

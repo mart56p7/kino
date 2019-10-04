@@ -14,6 +14,6 @@ public class AdminCRUDUser extends CRUDControllerAbstract <User, UserService> {
 
     @Autowired
     public AdminCRUDUser(@Qualifier("UserService") UserService userservice, @Qualifier("LoggerService") LoggerService loggerservice) {
-        super("/admin/user", "user", "User", userservice, loggerservice);
+        super("admin/user/", "user", "user", userservice, loggerservice);
     }
 }

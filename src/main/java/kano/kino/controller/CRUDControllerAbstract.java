@@ -55,15 +55,7 @@ public abstract class CRUDControllerAbstract
         this.logger.setClassName(this.classname);
     }
 
-    @GetMapping()
-    public String get_root(HttpSession session){
-        if(userType(session) != UserType.ADMINISTRATOR){
-            return cmspath + "login";
-        }
-        return "redirect:/"+path+"index";
-    }
-
-    @GetMapping("index")
+    @GetMapping({"", "index"})
     public String get_root_index(Model model, HttpSession session)
     {
         if(userType(session) != UserType.ADMINISTRATOR)

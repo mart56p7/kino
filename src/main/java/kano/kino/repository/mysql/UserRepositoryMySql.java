@@ -102,6 +102,7 @@ public class UserRepositoryMySql implements UserRepository {
     }
 
     public ResultSet validateUser(String name, String password) throws SQLException {
+        System.out.println("Validate user");
         String sql = "CALL validateUser(?, ?)";
         PreparedStatement pstmt = dbi.getConnection().prepareCall(sql);
         pstmt.setString(1, name);
