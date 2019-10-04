@@ -7,12 +7,12 @@ import java.sql.SQLException;
 
 /**
  * The database interface expect that you defined the following constraints in application.properties
- * morcms.datasource.port = The port for the database
- * morcms.datasource.username = The database user
- * morcms.datasource.password = The password for the database user
- * morcms.datasource.server = The database server
- * morcms.datasource.db = The database name
- * morcms.datasource.timeout = Timeout for the database connection in seconds
+ * kino.datasource.port = The port for the database
+ * kino.datasource.username = The database user
+ * kino.datasource.password = The password for the database user
+ * kino.datasource.server = The database server
+ * kino.datasource.db = The database name
+ * kino.datasource.timeout = Timeout for the database connection in seconds
  *
  * These must be used in the class that implements the interface!
  * */

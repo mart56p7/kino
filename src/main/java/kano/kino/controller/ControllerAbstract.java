@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import javax.servlet.http.HttpSession;
 
 /**
- * An abstract class, that will suite most Controllers that are part of the MORCMS.
+ * An abstract class, that will suite most Controllers that are part of the KINO ADMIN.
  *
  * Gives access to the cms path.
  * Gives access to the userType
