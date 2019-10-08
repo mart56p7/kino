@@ -41,6 +41,7 @@ public class UserService implements CRUDServiceInterface<User> {
     }
 
     public void edit(User user) throws SQLException {
+        System.out.println("edit");
         ur.editUser(user.getId(), user.getName(), user.getPassword(), user.getUserType().getId());
     }
 

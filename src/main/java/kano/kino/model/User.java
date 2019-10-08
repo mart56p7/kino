@@ -19,7 +19,8 @@ public class User implements ModelInterface{
     @Size(min=8, max=250)
     private String password = null;
 
-    private UserType usertype = UserType.ANONYMOUS;
+    private UserType usertype = UserType.UNDEFINED;
+    private int usertypeid = -1;
 
     public User(){
 
@@ -60,14 +61,31 @@ public class User implements ModelInterface{
         this.password = password;
     }
 
-    public UserType getUserType() {
-        return usertype;
+    public UserType getUserType()
+    {
+        if(this.usertype == UserType.UNDEFINED){
+            if(this.usertypeid != -1){
+                this.usertype = UserType.getUserType(usertypeid);
+            }
+        }
+        return this.usertype;
     }
 
-    public void setUserTypeId(int usertype_id) {
+    public int getUsertypeid(){
+        if(this.usertypeid == -1){
+            if(this.usertype != UserType.UNDEFINED){
+                this.usertypeid = this.usertype.getId();
+            }
+        }
+        return this.usertypeid;
+    }
+
+    public void setUsertypeid(int usertype_id) {
+        this.usertypeid = usertype_id;
         this.usertype = UserType.getUserType(usertype_id);
     }
     public void setUsertype(UserType usertype){
+        this.usertypeid = usertype.getId();
         this.usertype = usertype;
     }
 }

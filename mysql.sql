@@ -1,8 +1,10 @@
--- MySQL dump 10.13  Distrib 8.0.13, for Win64 (x86_64)
+CREATE DATABASE IF NOT EXISTS `kino`;
+USE `kino`;
+-- MySQL dump 10.13  Distrib 8.0.12, for Win64 (x86_64)
 --
--- Host: localhost    Database: MORCMS
+-- Host: localhost    Database: kino
 -- ------------------------------------------------------
--- Server version	8.0.13
+-- Server version	8.0.12
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -33,7 +35,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `name_UNIQUE` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,17 +44,13 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` (`id`, `name`, `password`, `usertype_id`, `salt`, `login_attempts`, `last_login_attempt`) VALUES (18,'mor','18fd8d6f9a9505d3320f90215dab0e7892255bf16414f8c887f132285374945cfa60944927636b9d72b67bb950c2f74fdc1ae23c22b08aa5b581a938fdbab885',1,'___44302935',8,'2019-05-27 10:41:10'),(23,'g4','de3d3ddef187a28a8463487d7c6d97abdea96d1e80d509c7ad319b8872eb4208e7a7f462e14fe183d09f009ed172b6ec05e97a059ac5750d5fdbda674df0a581',4,'_1385574766',0,'2019-10-04 10:27:21');
+INSERT INTO `users` (`id`, `name`, `password`, `usertype_id`, `salt`, `login_attempts`, `last_login_attempt`) VALUES (33,'admin','2dd3ad3ec024487cb165dc6b487ef028bbbc2177fca0404d269a8ecf6aee258b8e3ead20e10d95a23a86ba6cc7c0f40585f4349b38fbdecd1f56248ae2869285',1,'_1033043588',0,'2019-10-08 02:32:17'),(34,'employee','e4853aec4befd0d2fec1c416d5db75634c7b7c1e662783938c4b691aef295f377bf0db203f05a42b278ff2dfb1f5e2073eab459c487aa79571be958513ea411d',2,'_-602472355',0,'2019-10-08 02:32:43');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Dumping routines for database 'MORCMS'
+-- Dumping routines for database 'kino'
 --
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `createUser` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -61,14 +59,14 @@ UNLOCK TABLES;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `createUser`(IN name varchar(50), IN password varchar(250), IN salt varchar(11), IN usertype_id int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `createUser`(IN name varchar(50), IN password varchar(250), IN salt varchar(11), IN usertype_id int)
 BEGIN
-	INSERT INTO `MORCMS`.`users` (`name`, `password`, `salt`, `usertype_id`) VALUES (name, sha2(password, 512), salt, usertype_id);
-    SELECT * FROM `MORCMS`.`users` ORDER BY id DESC LIMIT 1;
+	INSERT INTO `users` (`name`, `password`, `salt`, `usertype_id`) VALUES (name, sha2(password, 512), salt, usertype_id);
+    SELECT * FROM `users` ORDER BY id DESC LIMIT 1;
 END ;;
-
+DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
@@ -81,9 +79,9 @@ END ;;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `validateUser`(IN cname VARCHAR(50), IN cpassword VARCHAR(250))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `validateUser`(IN cname VARCHAR(50), IN cpassword VARCHAR(250))
 BEGIN
 DECLARE rid int;
 DECLARE rlogin_attempts INT;
@@ -129,4 +127,8 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-10-04 10:35:58
+-- Dump completed on 2019-10-08  2:33:18
+CREATE USER IF NOT EXISTS 'kinodml'@'localhost';
+ALTER USER 'kinodml'@'localhost' IDENTIFIED BY 'KinoKano!';
+GRANT DELETE, INSERT, SELECT, UPDATE, EXECUTE ON `kino`.* TO 'kinodml'@'localhost';
+FLUSH PRIVILEGES;

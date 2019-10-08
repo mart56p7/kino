@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.7.2/css/all.css}" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>    <link th:href="@{/css/webpage.css}" rel="stylesheet" />
+    <link th:href="@{/css/webshop.css}" rel="stylesheet" />
+    <link th:href="@{/css/morcms.css}" rel="stylesheet" />
+</head>
+<body id="login">
+<div id="logintext">LOGIN</div>
+<div id="loginbox">
+    <form id="loginform" method="post" action="/login">
+        <label>Username</label>
+        <input class="form-control" type="text" name="name" path="name" placeholder="Username">
+        <label>Password</label>
+        <input class="form-control" type="password" name="password" path="password" placeholder="Password">
+        <input class="form-control btn-primary" type="submit" value="Login">
+    </form>
+</div>
+
+
+</body>
+</html>

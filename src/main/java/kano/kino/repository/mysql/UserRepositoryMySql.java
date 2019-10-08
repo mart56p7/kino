@@ -70,6 +70,7 @@ public class UserRepositoryMySql implements UserRepository {
      * The user password is saved as SHA2 512bit, with the salt thats stored in the salt column
      * */
     public void editUser(int id, String name, String password, int usertype_id) throws SQLException {
+        System.out.println("usertype" + usertype_id);
         int salt = getSalt();
         String sql = "UPDATE users SET `name` = ?, `password` = SHA2(?, 512), `salt` = ?, `usertype_id` = ? WHERE `id` = ?";
         PreparedStatement pstmt = dbi.getConnection().prepareStatement(sql);

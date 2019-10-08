@@ -41,7 +41,7 @@ public class Root extends ControllerAbstract{
             //Returns a user object on success or null on failure
             session.setAttribute("user", as.validateUser(user));
             //If the user hasnt logged in, we want to validate the user
-            if(userType(session) != UserType.ADMINISTRATOR){
+            if(!(userType(session) == UserType.ADMINISTRATOR || userType(session) == UserType.EMPLOYEE)){
                 return "login";
             }
             //If we dont specificly update the userType, it takes 1 more load of the page for it to update..

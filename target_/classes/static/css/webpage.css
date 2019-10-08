@@ -1,0 +1,19 @@
+#loginbox{
+    margin: 0 auto;
+    margin-top: 10px;
+    border: 1px dotted black;
+    width: 300px;
+    padding: 25px;
+}
+
+#logintext{
+    width: 300px;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 130px;
+    font-size: 40px;
+}
+
+input[type="submit"]{
+    margin-top: 10px;
+}

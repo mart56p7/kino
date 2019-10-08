@@ -7,9 +7,9 @@ package kano.kino.model;
 
 public enum UserType {
     ADMINISTRATOR (1, "Administrator"),
-    GUEST (2, "Guest"), //Same as Anonymous, but cookies are available
-    REGISTERED (3, "Registered"),
-    ANONYMOUS (4, "Anonymous"); //Cookies are not available for anonymous users
+    EMPLOYEE (2, "Employee"),
+    ANONYMOUS (3, "Anonymous"),
+    UNDEFINED (4, "Undefined");
 
     private int id;
     private String name;

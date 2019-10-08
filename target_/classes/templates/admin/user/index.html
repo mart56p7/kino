@@ -1,0 +1,27 @@
+<th:block th:include="admin/header.html"></th:block>
+
+
+<h1>Users</h1>
+<a href="./create" class="btn btn-primary right">Create User</a>
+<br/><br/>
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Usertype</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td><a th:href="@{./info/} + ${user.getId()}" th:text="${user.getName()}"></a></td>
+        <td><a th:href="@{./info/} + ${user.getId()}" th:text="${user.getUserType().name()}"></a></td>
+        <td><a th:href="@{./edit/} + ${user.getId()}" class="glyphicon glyphicon-pencil"></a></td>
+        <td><a th:href="@{./delete/} + ${user.getId()}" class="glyphicon glyphicon-remove"></a></td>
+    </tr>
+    </tbody>
+</table>
+
+
+<th:block th:include="admin/footer.html"></th:block>
