@@ -1,8 +1,8 @@
 <th:block th:include="admin/header.html"></th:block>
 
-<h1 class="block">Create User</h1>
-<a href="./" class="btn btn-primary right">Back</a>
-<br/>
+<h1 class="headline">Create User</h1>
+<a href="./" class="button right">Back</a>
+
 <div class="form-group">
     <form method="post" action="./create" th:object="${user}">
         <label>Username: </label> <input type="text" th:field="*{name}" class="form-control">

@@ -1,8 +1,8 @@
 <th:block th:include="admin/header.html"></th:block>
-
-<h1 class="block">User info</h1>
-<a href="./../" class="btn btn-primary right">Back</a>
-<br/>
+<div class="headline">
+<h1 class="headline">User info</h1>
+<a href="./../" class="button right">Back</a>
+</div>
 <label>Id:</label><p th:text="${user.getId()}"></p>
 <label>Username: </label><p th:text="${user.getName()}"></p>
 <label>Brugertype: </label><p th:text="${user.getUserType().getName()}"></p>

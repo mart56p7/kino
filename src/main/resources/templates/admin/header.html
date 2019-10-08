@@ -18,11 +18,5 @@
     <link th:href="@{/css/webpage.css}" rel="stylesheet" />
 </head>
 <body>
-<div class="block">
-    <header>
-        <a href="/admin/" class="topmenu">KINO Admin</a>
-    </header>
-</div>
-
-
-<div class="page">
+<th:block th:include="admin/nav.html"></th:block>
+<div class="adminpage">
