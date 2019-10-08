@@ -1,9 +1,15 @@
+
+#login_body{background-color: darkgray;}
+
+#shows_table {border: 1px solid black;}
+
 #loginbox{
     margin: 0 auto;
     margin-top: 10px;
-    border: 1px dotted black;
+
     width: 300px;
     padding: 25px;
+
 }
 
 #logintext{
