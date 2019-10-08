@@ -16,14 +16,7 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <link th:href="@{/css/webpage.css}" rel="stylesheet" />
-
 </head>
-<body >
-<div class="block">
-    <header>
-        <a href="/admin/" class="topmenu">KINO Admin</a>
-    </header>
-</div>
-
-
-<div class="page">
+<body>
+<th:block th:include="admin/nav.html"></th:block>
+<div class="adminpage">
