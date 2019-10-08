@@ -1,3 +1,113 @@
+html{
+    width: 100%;
+    height: 100%;
+}
+body{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+div.adminpage{
+    display: inline-block;
+    overflow: auto;
+    margin: 0px;
+    padding: 25px;
+    height: 100%;
+    width: 1000px;
+    float: left;
+}
+
+div.adminpage a{
+    color: #c60000;
+}
+
+table.datatable th {
+    padding: 5px;
+    border: 1px solid black;
+    background: #C60000;
+    color: white;
+}
+
+table.datatable td {
+    padding: 5px;
+    border: 1px solid black;
+}
+
+#loginbox{
+    margin: 0 auto;
+    margin-top: 10px;
+    border: 1px dotted black;
+    width: 300px;
+    padding: 25px;
+}
+
+#logintext{
+    width: 300px;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 130px;
+    font-size: 40px;
+}
+
+input[type="submit"]{
+    margin-top: 10px;
+}
+
+div.adminmenu{
+    display: inline-block;
+    width: 200px;
+    height: 100%;
+    padding: 25px;
+    float: left;
+    color: white;
+    background: #C60000;
+    border-right: 1px solid black;
+}
+
+div.adminmenu > a{
+    color: white;
+
+}
+
+.right{
+    display: inline-block;
+    float: right;
+}
+
+.left{
+    display: inline-block;
+    float: left;
+}
+
+h1.headline{
+    display: inline-block;
+    float: left;
+    margin: 0px;
+    padding: 0px;
+    margin-bottom: 15px;
+}
+
+div.adminpage a.button{
+    border-radius: 15px;
+    background: #C60000;
+    padding: 15px;
+    color: white; !important;
+}
+
+div.adminpage a.button:hover{
+    border-radius: 15px;
+    background: #C60000;
+    padding: 15px;
+    color: silver; !important;
+}
+
+div.headline{
+    height: 80px;
+    width: 100%;
+    display: block;
+}
 
 #login_body{background-color: darkgray;}
 
@@ -18,8 +128,4 @@
     margin: 0 auto;
     margin-top: 130px;
     font-size: 40px;
-}
-
-input[type="submit"]{
-    margin-top: 10px;
 }
