@@ -29,6 +29,7 @@ public class Root extends ControllerAbstract{
     @GetMapping("login")
     public String get_login(HttpSession session){
         if(userType(session) != UserType.ADMINISTRATOR){
+            logger.log("get_login > Failed login", userName(session), LoggerService.CONTROLLER_MSG);
             return "login";
         }
         return "index";
@@ -42,19 +43,22 @@ public class Root extends ControllerAbstract{
             session.setAttribute("user", as.validateUser(user));
             //If the user hasnt logged in, we want to validate the user
             if(!(userType(session) == UserType.ADMINISTRATOR || userType(session) == UserType.EMPLOYEE)){
+                logger.log("post_login > Failed login", userName(session), LoggerService.CONTROLLER_MSG);
                 return "login";
             }
             //If we dont specificly update the userType, it takes 1 more load of the page for it to update..
             model.addAttribute("userType", userType(session));
+            logger.log("post_login > Failed login", userName(session), LoggerService.CONTROLLER_MSG);
             return "index";
         } catch (SQLException e) {
-            logger.log("post_login", e, LoggerService.CONTROLLER_MSG);
+            logger.log("post_login", e, userName(session), LoggerService.CONTROLLER_MSG);
             return cmspath+"error";
         }
     }
 
     @GetMapping("logout")
     public String get_logout(HttpSession session){
+        logger.log("logout", userName(session), LoggerService.CONTROLLER_MSG);
         session.invalidate();
         return "index";
     }
