@@ -52,9 +52,13 @@ public class LoggerService {
         log(method, e, 0);
     }
 
-    public void log(String method, Exception e, int indent){
-        log(method, e.getClass().toString(), e.getMessage(), 0);
+    public void log(String method, Exception e, int indent){ log(method, e.getClass().toString(), e.getMessage(), indent); }
+
+    public void log(String method, Exception e, String username){
+        log(method, e, username, 0);
     }
+
+    public void log(String method, Exception e, String username, int indent){ log(username + " > " + method, e.getClass().toString(), e.getMessage(), indent); }
 
     public void log(String method, String type, String msg){
         log(method, type, msg, 0);
@@ -63,6 +67,12 @@ public class LoggerService {
     public void log(String method, String type, String msg, int indent){
         log(method, type + ": " + msg, indent);
     }
+
+    public void log(String method, String type, String msg, String username){
+        log(method, type, msg, username, 0);
+    }
+
+    public void log(String method, String type, String msg, String username, int indent){ log(username + " > " + method, type, msg, indent); }
 
     public void log(String method, String msg, int indent) {
         log(method + " > " + msg, indent);

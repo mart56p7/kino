@@ -20,6 +20,15 @@ public abstract class ControllerAbstract {
     @Autowired
     LoggerService logger;
 
+    @ModelAttribute("userName")
+    public String userName(HttpSession session){
+        Object user = session.getAttribute("user");
+        if(user instanceof User){
+            return ((User)user).getName();
+        }
+        return "";
+    }
+
     @ModelAttribute("userType")
     public UserType userType(HttpSession session){
         /*

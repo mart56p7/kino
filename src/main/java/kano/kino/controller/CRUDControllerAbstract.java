@@ -60,14 +60,16 @@ public abstract class CRUDControllerAbstract
     {
         if(userType(session) != UserType.ADMINISTRATOR)
         {
+            logger.log("get_root_index > Failed login", userName(session), LoggerService.CONTROLLER_MSG);
             return cmspath + "login";
         }
         try
         {
             model.addAttribute(modelname + "s", service.getAll());
+            logger.log("get_root_index", userName(session), LoggerService.CONTROLLER_MSG);
             return path + "index";
         } catch (SQLException e) {
-            logger.log("get_root_index", e, LoggerService.CONTROLLER_MSG);
+            logger.log("get_root_index", e, userName(session), LoggerService.CONTROLLER_MSG);
             return cmspath + "error";
         }
     }
@@ -76,24 +78,28 @@ public abstract class CRUDControllerAbstract
     public String get_create(Model model, HttpSession session, ModelFactory modelfactory) {
         if(userType(session) != UserType.ADMINISTRATOR)
         {
+            logger.log("get_create > Failed login", userName(session), LoggerService.CONTROLLER_MSG);
             return cmspath + "login";
         }
+        logger.log("get_create", userName(session), LoggerService.CONTROLLER_MSG);
         model.addAttribute(modelname, modelfactory.getModel(modelname));
         return path + "create";
     }
 
     @PostMapping("create")
     public String post_create(@ModelAttribute @Valid E e, BindingResult result, HttpSession session, Model model){
-        model.addAttribute(modelname, e);
         if(userType(session) != UserType.ADMINISTRATOR)
         {
+            logger.log("post_create > Failed login", userName(session), LoggerService.CONTROLLER_MSG);
             return cmspath + "login";
         }
+        model.addAttribute(modelname, e);
         if (result.hasErrors()) {
             return path + "create";
         }
         try {
             E newe = service.create(e);
+            logger.log("post_create", userName(session), LoggerService.CONTROLLER_MSG);
             return "redirect:/"+path+"info/" + newe.getId();
         } catch (SQLException ex) {
             logger.log("post_create", ex, LoggerService.CONTROLLER_MSG);
@@ -106,10 +112,12 @@ public abstract class CRUDControllerAbstract
     {
         if(userType(session) != UserType.ADMINISTRATOR)
         {
+            logger.log("get_edit > Failed login", userName(session), LoggerService.CONTROLLER_MSG);
             return cmspath+"login";
         }
         try {
             model.addAttribute(modelname, service.getId(id));
+            logger.log("get_edit", userName(session), LoggerService.CONTROLLER_MSG);
             return path+"edit";
         } catch (SQLException e) {
             logger.log("get_edit", e, LoggerService.CONTROLLER_MSG);
@@ -123,6 +131,7 @@ public abstract class CRUDControllerAbstract
         model.addAttribute(modelname, e);
         if(userType(session) != UserType.ADMINISTRATOR)
         {
+            logger.log("post_edit > Failed login", userName(session), LoggerService.CONTROLLER_MSG);
             return cmspath + "login";
         }
         if (result.hasErrors()) {
@@ -130,6 +139,7 @@ public abstract class CRUDControllerAbstract
         }
         try {
             service.edit(e);
+            logger.log("post_edit", userName(session), LoggerService.CONTROLLER_MSG);
             return "redirect:/" + path + "info/" + e.getId();
         } catch (SQLException ex) {
             logger.log("post_edit", ex, LoggerService.CONTROLLER_MSG);
@@ -143,10 +153,12 @@ public abstract class CRUDControllerAbstract
     {
         if(userType(session) != UserType.ADMINISTRATOR)
         {
+            logger.log("get_delete > Failed login", userName(session), LoggerService.CONTROLLER_MSG);
             return cmspath + "login";
         }
         try {
             model.addAttribute(modelname, service.getId(id));
+            logger.log("get_delete", userName(session), LoggerService.CONTROLLER_MSG);
             return path + "delete";
         } catch (SQLException ex) {
             logger.log("get_delete", ex, LoggerService.CONTROLLER_MSG);
@@ -159,10 +171,12 @@ public abstract class CRUDControllerAbstract
     {
         if(userType(session) != UserType.ADMINISTRATOR)
         {
+            logger.log("post_delete > Failed login", userName(session), LoggerService.CONTROLLER_MSG);
             return cmspath + "login";
         }
         try {
             service.delete(id);
+            logger.log("post_delete", userName(session), LoggerService.CONTROLLER_MSG);
             return "redirect:/" + path;
         } catch (SQLException e) {
             logger.log("post_delete", e, LoggerService.CONTROLLER_MSG);
@@ -175,10 +189,12 @@ public abstract class CRUDControllerAbstract
     {
         if(userType(session) != UserType.ADMINISTRATOR)
         {
+            logger.log("get_info > Failed login", userName(session), LoggerService.CONTROLLER_MSG);
             return cmspath + "login";
         }
         try {
             model.addAttribute(modelname, service.getId(id));
+            logger.log("get_info", userName(session), LoggerService.CONTROLLER_MSG);
             return path + "info";
         } catch (SQLException e) {
             logger.log("get_info", e, LoggerService.CONTROLLER_MSG);
