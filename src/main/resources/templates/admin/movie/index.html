@@ -1,0 +1,30 @@
+<th:block th:include="admin/header.html"></th:block>
+
+<div class="headline">
+    <h1 class="headline">Movies</h1>
+    <a href="./create" class="button right">Create Movie</a>
+</div>
+
+
+<table class="datatable">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Genre</th>
+        <th>Length</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="movie : ${movies}">
+        <td><a th:href="@{./info/} + ${movie.getId()}" th:text="${movie.getName()}"></a></td>
+        <td><a th:href="@{./info/} + ${movie.getId()}" th:text="${movie.getGenre()}"></a></td>
+        <td><a th:href="@{./info/} + ${movie.getId()}" th:text="${movie.getLength()}"></a></td>
+        <td><a th:href="@{./edit/} + ${movie.getId()}" class="glyphicon glyphicon-pencil"></a></td>
+        <td><a th:href="@{./delete/} + ${movie.getId()}" class="glyphicon glyphicon-remove"></a></td>
+    </tr>
+    </tbody>
+</table>
+
+
+<th:block th:include="admin/footer.html"></th:block>

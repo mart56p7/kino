@@ -1,0 +1,10 @@
+<th:block th:include="admin/header.html"></th:block>
+<div class="headline">
+<h1 class="headline">Movie info</h1>
+<a href="./../" class="button right">Back</a>
+</div>
+<label>Id:</label><p th:text="${movie.getId()}"></p>
+<label>Name: </label><p th:text="${movie.getName()}"></p>
+<label>Genre: </label><p th:text="${movie.getGenre()}"></p>
+
+<th:block th:include="admin/footer.html"></th:block>

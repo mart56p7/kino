@@ -1,0 +1,28 @@
+<th:block th:include="admin/header.html"></th:block>
+
+<h1>Edit Movie</h1>
+<a href="./../" class="btn btn-primary right">Back</a>
+<br/>
+<div class="form-group">
+    <form method="post" action="../edit" class="fw500" th:object="${movie}">
+        <input type="hidden" th:field="*{id}">
+        <div class="block">
+            <label>Name:</label>
+            <input type="text" th:field="*{name}" class="form-control">
+            <p class="errortext" th:if="${#fields.hasErrors('name')}">The name must be between 2 and 50 characters long.</p>
+        </div>
+        <div class="block">
+            <label>Genre:</label>
+            <input type="text" th:field="*{text}" class="form-control">
+            <p class="errortext" th:if="${#fields.hasErrors('genre')}">The name must be between 0 and 50 characters long.</p>
+        </div>
+        <div class="block">
+            <label>Length:</label>
+            <input type="text" th:field="*{text}" class="form-control">
+        </div>
+        <br/>
+        <input type="submit" value="Edit" class="btn-primary form-control">
+    </form>
+</div>
+
+<th:block th:include="admin/footer.html"></th:block>

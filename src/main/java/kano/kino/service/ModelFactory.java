@@ -2,6 +2,7 @@ package kano.kino.service;
 
 
 import kano.kino.model.ModelInterface;
+import kano.kino.model.Movie;
 import kano.kino.model.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,8 @@ public class ModelFactory {
             case "USER":
                 model = new User();
                 break;
+            case "MOVIE":
+                model = new Movie();
         }
         return model;
     }
