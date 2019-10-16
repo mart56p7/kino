@@ -1,9 +1,12 @@
 <th:block th:include="admin/header.html"></th:block>
 
-<h1 class="headline">Create Movie</h1>
-<a href="./" class="button right">Back</a>
+<div style="width: 100%; height: 60px; display: block">
+    <h1 class="headline">Create Movie</h1>
+    <a href="./" class="button right">Back</a>
+</div>
 
-<div class="form-group">
+
+<div class="form-group" style="float: none; display: block; width: 100%;">
     <form method="post" action="./create" th:object="${movie}">
         <label>Name: </label> <input type="text" th:field="*{name}" class="form-control">
         <p class="errortext" th:if="${#fields.hasErrors('name')}">The name must be between 2 and 50 characters long.</p>

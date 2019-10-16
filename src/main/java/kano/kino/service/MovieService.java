@@ -25,7 +25,7 @@ public class MovieService implements CRUDServiceInterface<Movie> {
         ResultSet rs = mr.createMovie(movie.getName(), movie.getGenre(), movie.getLength());
         movie = null;
         if (rs.next()) {
-            movie = new Movie(movie.getId() ,movie.getName(), movie.getGenre(), movie.getLength());
+            movie = new Movie(rs.getInt("id"), rs.getString("name"), rs.getString("genre"), rs.getInt("length"));
         }
         return movie;
     }
@@ -33,7 +33,6 @@ public class MovieService implements CRUDServiceInterface<Movie> {
     @Override
     public void edit(Movie movie) throws SQLException {
         mr.editMovie(movie.getId(), movie.getName(),  movie.getGenre(), movie.getLength());
-
     }
 
     @Override

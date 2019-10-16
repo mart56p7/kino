@@ -127,6 +127,22 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+-- Movies
+CREATE PROCEDURE `createMovie`(IN name varchar(50), IN genre varchar(50), IN length int)
+BEGIN
+	INSERT INTO `movies` (`name`, `genre`, `length`) VALUES (name, genre, length);
+    SELECT * FROM `movies` ORDER BY id DESC LIMIT 1;
+END
+
+CREATE TABLE `movies` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) DEFAULT NULL,
+  `genre` varchar(50) DEFAULT NULL,
+  `length` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
 -- Dump completed on 2019-10-08  2:33:18
 CREATE USER IF NOT EXISTS 'kinodml'@'localhost';
 ALTER USER 'kinodml'@'localhost' IDENTIFIED BY 'KinoKano!';

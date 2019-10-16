@@ -9,10 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/admin/movies/")
+@RequestMapping("/admin/movie/")
 public class AdminCRUDMovie extends CRUDControllerAbstract <Movie, MovieService> {
     @Autowired
     public AdminCRUDMovie(@Qualifier("movieService") MovieService movieservice, @Qualifier("LoggerService") LoggerService loggerservice) {
-        super("admin/movies/", "movie", "movie", movieservice, loggerservice);
+        super("admin/movie/", "movie", "movie", movieservice, loggerservice);
     }
 }

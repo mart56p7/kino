@@ -13,12 +13,12 @@
         </div>
         <div class="block">
             <label>Genre:</label>
-            <input type="text" th:field="*{text}" class="form-control">
+            <input type="text" th:field="*{genre}" class="form-control">
             <p class="errortext" th:if="${#fields.hasErrors('genre')}">The name must be between 0 and 50 characters long.</p>
         </div>
         <div class="block">
             <label>Length:</label>
-            <input type="text" th:field="*{text}" class="form-control">
+            <input type="text" th:field="*{length}" class="form-control">
         </div>
         <br/>
         <input type="submit" value="Edit" class="btn-primary form-control">
