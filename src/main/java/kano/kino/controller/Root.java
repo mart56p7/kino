@@ -20,7 +20,7 @@ public class Root extends ControllerAbstract{
     @Autowired
     AuthorizationService as;
 
-    @GetMapping({"", "index"})
+    @GetMapping({"", "index", "/"})
     public String get_root(){
         System.out.println("Index");
         return "index";
@@ -61,5 +61,10 @@ public class Root extends ControllerAbstract{
         logger.log("logout", userName(session), LoggerService.CONTROLLER_MSG);
         session.invalidate();
         return "index";
+    }
+
+    @GetMapping("auditorium")
+    public String get_auditorium(){
+        return "auditorium";
     }
 }
